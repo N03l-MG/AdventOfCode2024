@@ -19,18 +19,7 @@ public class Day2
 		int safeCount1 = 0;
 		foreach (int[] report in reports)
 		{
-			bool isSafe = true;
-			bool isIncreasing = report[1] > report[0];
-			for (int i = 1; i < report.Length; i++)
-			{
-				int diff = report[i] - report[i - 1];
-				if (!(Math.Abs(diff) >= 1 && Math.Abs(diff) <= 3 && ((isIncreasing && diff > 0) || (!isIncreasing && diff < 0))))
-				{
-					isSafe = false;
-					break;
-				}
-			}
-			if (isSafe)
+			if (IsSafe(report))
 				safeCount1++;
 		}
 
@@ -38,7 +27,7 @@ public class Day2
 		int safeCount2 = 0;
 		foreach (int[] report in reports)
 		{
-			if (ProblemDampener(report))
+			if (IsSafe(report))
 			{
 				safeCount2++;
 				continue;
@@ -47,8 +36,7 @@ public class Day2
 			for (int i = 0; i < report.Length; i++)
 			{
 				int[] modifiedReport = report.Where((_, index) => index != i).ToArray();
-
-				if (ProblemDampener(modifiedReport))
+				if (IsSafe(modifiedReport))
 				{
 					canBeMadeSafe = true;
 					break;
@@ -61,8 +49,8 @@ public class Day2
 		Console.WriteLine("Part 2: " + safeCount2);
 	}
 
-	// Helper for Part 2
-	static bool ProblemDampener(int[] array)
+	// Helper for report checking
+	static bool IsSafe(int[] array)
 	{
 		bool isIncreasing = array[1] > array[0];
 		for (int i = 1; i < array.Length; i++)
