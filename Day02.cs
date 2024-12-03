@@ -27,8 +27,7 @@ public class Day2
 		int safeCount2 = 0;
 		foreach (int[] report in reports)
 		{
-			if (IsSafe(report))
-			{
+			if (IsSafe(report)) {
 				safeCount2++;
 				continue;
 			}
@@ -36,8 +35,7 @@ public class Day2
 			for (int i = 0; i < report.Length; i++)
 			{
 				int[] modifiedReport = report.Where((_, index) => index != i).ToArray();
-				if (IsSafe(modifiedReport))
-				{
+				if (IsSafe(modifiedReport)) {
 					canBeMadeSafe = true;
 					break;
 				}
@@ -45,6 +43,8 @@ public class Day2
 			if (canBeMadeSafe)
 				safeCount2++;
 		}
+
+		// Results
 		Console.WriteLine("Part 1: " + safeCount1);
 		Console.WriteLine("Part 2: " + safeCount2);
 	}
