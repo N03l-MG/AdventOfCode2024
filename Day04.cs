@@ -17,18 +17,18 @@ public class Day4
 		// Parsing
 		string filePath = "resources/day4input.txt";
 		List<string> lines = new List<string>(File.ReadAllLines(filePath));
-		char[,] crossword = new char [lines.Count, lines[0].Length];
+		char[,] wordsearch = new char [lines.Count, lines[0].Length];
 		for (int i = 0; i < lines.Count; i++)
 		{
 			char[] lineChars = lines[i].ToCharArray();
 			for (int j = 0; j < lines[i].Length; j++)
-				crossword[i,j] = lineChars[j];
+				wordsearch[i,j] = lineChars[j];
 		}
 
 		// Part 1
 		int xmasCount = 0;
-		int dimX = crossword.GetLength(1);
-		int dimY = crossword.GetLength(0);
+		int dimX = wordsearch.GetLength(1);
+		int dimY = wordsearch.GetLength(0);
 		for (int row = 0; row < dimY; row++)
 		{
 			for (int col = 0; col < dimX; col++)
@@ -37,20 +37,30 @@ public class Day4
 				{
 					int rowDelta = vector[d, 0];
 					int colDelta = vector[d, 1];
-					if (CheckWord(dimY, dimX, row, col, rowDelta, colDelta, crossword))
+					if (CheckWord(dimY, dimX, row, col, rowDelta, colDelta, wordsearch))
 						xmasCount++;
 				}
 			}
 		}
 
-		// Part 2
+		// Part 2 (solution isnpired by HyperNeutrino's approach, she's smart)
 		int x_masCount = 0;
-		for (int row = 0; row < dimY; row++)
+		for (int row = 1; row < dimY - 1; row++)
 		{
-			for (int col = 0; col < dimX; col++)
+			for (int col = 1; col < dimX - 1; col++)
 			{
-				if (CheckX(dimY, dimX, row, col, crossword))
+				if (wordsearch[row, col] != 'A') continue;
+				char[] corners = [
+					wordsearch[row - 1, col - 1],
+					wordsearch[row - 1, col + 1],
+					wordsearch[row + 1, col + 1],
+					wordsearch[row + 1, col - 1]
+				];
+				string cornersString = new string(corners);
+				if (cornersString == "MMSS" || cornersString == "MSSM" || cornersString == "SSMM" || cornersString == "SMMS")
+				{
 					x_masCount++;
+				}
 			}
 		}
 
@@ -60,24 +70,17 @@ public class Day4
 	}
 
 	// Helper to check if XMAS has been found (part 1)
-	static bool CheckWord(int rows, int cols, int row, int col, int rowDelta, int colDelta, char[,] crossword)
+	static bool CheckWord(int rows, int cols, int row, int col, int rowDelta, int colDelta, char[,] wordsearch)
 	{
 		string word = "XMAS";
 		for (int i = 0; i < word.Length; i++)
 		{
 			int newRow = row + i * rowDelta;
 			int newCol = col + i * colDelta;
-			if (newRow < 0 || newRow >= rows || newCol < 0 || newCol >= cols ||
-				crossword[newRow, newCol] != word[i]) {
+			if (newRow < 0 || newRow >= rows || newCol < 0 || newCol >= cols || wordsearch[newRow, newCol] != word[i]) {
 				return false;
 			}
 		}
 		return true;
 	}
-
-	// Helper to check diagonals at A to find X patterns (part 2)
-	static bool CheckX(int dimY, int dimX, int row, int col, char[,] crossword)
-    {
-        // fucking impossible, trying later.
-    }
 }
