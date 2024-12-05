@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-
 namespace AdventOfCode2024;
 
 public class Day1
@@ -10,9 +6,9 @@ public class Day1
 	{
 		// Parsing
 		string filePath = "resources/day1input.txt";
-		List<string> lines = new List<string>(File.ReadAllLines(filePath));
-		List<int> list1 = new List<int>();
-		List<int> list2 = new List<int>();
+		List<string> lines = [.. File.ReadAllLines(filePath)];
+		List<int> list1 = [];
+		List<int> list2 = [];
 		int result1 = 0;
 		int result2 = 0;
 		foreach (string line in lines)

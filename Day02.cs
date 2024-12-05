@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-
 namespace AdventOfCode2024;
 
 public class Day2
@@ -10,8 +6,8 @@ public class Day2
 	{
 		// Parsing
 		string filePath = "resources/day2input.txt";
-		List<string> lines = new List<string>(File.ReadAllLines(filePath));
-		List<int[]> reports = new List<int[]>();
+		List<string> lines = [.. File.ReadAllLines(filePath)];
+		List<int[]> reports = [];
 		foreach (string line in lines)
 			reports.Add(line.Split(' ').Select(int.Parse).ToArray());
 

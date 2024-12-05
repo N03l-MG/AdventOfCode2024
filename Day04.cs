@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-
 namespace AdventOfCode2024;
 
 public class Day4
 {
-	static int[,] vector = {
+	static readonly int[,] vector = {
 		{-1, -1}, {0, -1}, {1, -1},
 		{ -1, 0},          { 1, 0},
 		{ -1, 1}, { 0, 1}, { 1, 1}
@@ -16,7 +12,7 @@ public class Day4
 	{
 		// Parsing
 		string filePath = "resources/day4input.txt";
-		List<string> lines = new List<string>(File.ReadAllLines(filePath));
+		List<string> lines = [.. File.ReadAllLines(filePath)];
 		char[,] wordsearch = new char [lines.Count, lines[0].Length];
 		for (int i = 0; i < lines.Count; i++)
 		{
@@ -56,11 +52,9 @@ public class Day4
 					wordsearch[row + 1, col + 1],
 					wordsearch[row + 1, col - 1]
 				];
-				string cornersString = new string(corners);
+				string cornersString = new(corners);
 				if (cornersString == "MMSS" || cornersString == "MSSM" || cornersString == "SSMM" || cornersString == "SMMS")
-				{
 					x_masCount++;
-				}
 			}
 		}
 
@@ -77,9 +71,8 @@ public class Day4
 		{
 			int newRow = row + i * rowDelta;
 			int newCol = col + i * colDelta;
-			if (newRow < 0 || newRow >= rows || newCol < 0 || newCol >= cols || wordsearch[newRow, newCol] != word[i]) {
+			if (newRow < 0 || newRow >= rows || newCol < 0 || newCol >= cols || wordsearch[newRow, newCol] != word[i])
 				return false;
-			}
 		}
 		return true;
 	}

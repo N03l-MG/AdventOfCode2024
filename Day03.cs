@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text.RegularExpressions;
-
 namespace AdventOfCode2024;
 
 public class Day3
@@ -14,7 +10,7 @@ public class Day3
 		string input = File.ReadAllText(filePath);
 
 		// Part 1
-		Regex mul = new Regex(@"mul\((\d{1,3}),(\d{1,3})\)");
+		Regex mul = new(@"mul\((\d{1,3}),(\d{1,3})\)");
 		MatchCollection matches = mul.Matches(input);
 		int result1 = 0;
 		foreach (Match match in matches)
@@ -25,7 +21,7 @@ public class Day3
 		}
 
 		// Part 2
-		Regex toggle = new Regex(@"do\(\)|don't\(\)");
+		Regex toggle = new(@"do\(\)|don't\(\)");
 		bool isEnabled = true;
 		int result2 = 0;
 		matches = Regex.Matches(input, $"{mul}|{toggle}");
