@@ -37,17 +37,29 @@ public class Day5
 			ruleDict[(x, y)] = true;
 			ruleDict[(y, x)] = false;
 		}
+		List<int[]> incorrectUpdates = [];
 		foreach (int[] update in updates)
 		{
-			if (IsInOrder(update, ruleDict)) {
+			if (IsInOrder(update, ruleDict))
 				result1 += update[update.Length / 2];
-			}
+			else
+				incorrectUpdates.Add(update);
+		}
+
+		// Part 2
+		int result2 = 0;
+		foreach (int[] update in incorrectUpdates)
+		{
+			int[] sortedUpdate = SortUpdate(update, ruleDict);
+			result2 += sortedUpdate[sortedUpdate.Length / 2];
 		}
 
 		// Results
 		Console.WriteLine("Part 1: " + result1);
+		Console.WriteLine("Part 2: " + result2);
 	}
 
+	// Helper for checking order of update
 	static bool IsInOrder(int[] update, Dictionary<(int, int), bool> ruleDict)
 	{
 		for (int i = 0; i < update.Length; i++)
@@ -55,10 +67,25 @@ public class Day5
 			for (int j = i + 1; j < update.Length; j++)
 			{
 				var key = (update[i], update[j]);
-				if (ruleDict.ContainsKey(key) && !ruleDict[key])
+				if (ruleDict.TryGetValue(key, out bool value) && !value)
 					return false;
 			}
 		}
 		return true;
+	}
+
+	// Helper to sort update based on rules using special comparison lambda
+	static int[] SortUpdate(int[] update, Dictionary<(int, int), bool> ruleDict)
+	{
+		var sorted = update.ToList();
+		sorted.Sort((a, b) =>
+		{
+			if (ruleDict.TryGetValue((a, b), out bool rule))
+				return rule ? -1 : 1;
+			else if (ruleDict.TryGetValue((b, a), out rule))
+				return rule ? 1 : -1;
+			return 0;
+		});
+		return [.. sorted];
 	}
 }
