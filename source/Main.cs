@@ -1,12 +1,13 @@
-﻿namespace AdventOfCode2024;
+﻿using System.Reflection;
+
+namespace AdventOfCode2024.source;
 
 public class DayRunner
 {
 	private static void Main(string[] args)
 	{
-		string day;
 		Console.Write("Select day to run: ");
-		day = Convert.ToString(Console.ReadLine());
+		string? day = Convert.ToString(Console.ReadLine());
 		// Get user input day
 		if (!int.TryParse(day, out _) || int.Parse(day) > 25) {
 			Console.WriteLine("Not a valid day!");
@@ -17,10 +18,13 @@ public class DayRunner
 				return;
 			}
 			// Run Start method of chosen Day class 
-			var method = type.GetMethod("Start");
-			Console.WriteLine("Running day " + day + "...");
-			method.Invoke(null, null);
-			return;
+			MethodInfo? method = type?.GetMethod("Start");
+			if (method == null) {
+				Console.WriteLine("Missing Start() method!");
+			} else {
+				Console.WriteLine("Running day " + day + "...");
+				method!.Invoke(null, null);
+			}
 		}
 	}
 }

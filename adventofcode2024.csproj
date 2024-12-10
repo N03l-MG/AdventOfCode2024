@@ -6,6 +6,12 @@
 	<ImplicitUsings>enable</ImplicitUsings>
 	<RootNamespace>AdventOfCode2024</RootNamespace>
 	<CheckEolTargetFramework>false</CheckEolTargetFramework>
+	<Nullable>enable</Nullable>
 </PropertyGroup>
+
+<ItemGroup>
+    <Compile Include="source\**\*.cs" />
+    <None Include="resources\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
 </Project>

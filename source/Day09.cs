@@ -1,4 +1,4 @@
-namespace AdventOfCode2024;
+namespace AdventOfCode2024.source;
 
 public class Day9
 {

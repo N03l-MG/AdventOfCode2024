@@ -1,4 +1,4 @@
-namespace AdventOfCode2024;
+namespace AdventOfCode2024.source;
 
 public class Day6
 {
@@ -24,14 +24,14 @@ public class Day6
 		}
 
 		// Part 1
-		Pos currentPos = null;
+		Pos? currentPos = null;
 		int visited = 1;
 		int dirIndex = 0;
-		currentPos = FindStartPos(lab, currentPos);
+		currentPos = FindStartPos(lab, currentPos!);
 		while (true)
 		{
-			int newR = currentPos.R + directions[dirIndex, 0];
-			int newC = currentPos.C + directions[dirIndex, 1];
+			int newR = currentPos!.R + directions[dirIndex, 0];
+			int newC = currentPos!.C + directions[dirIndex, 1];
 			if (newR < 0 || newR >= lab.GetLength(0) || newC < 0 || newC >= lab.GetLength(1))
 				break;
 			if (lab[newR, newC] == '#') {
@@ -58,11 +58,11 @@ public class Day6
 					lab[i, j] = 'O';
 					HashSet<(int, int, int)> moveStates = [];
 					bool hasLoop = false;
-					Pos tempPos = currentPos;
+					Pos? tempPos = currentPos;
 					int tempDirIndex = dirIndex;
 					while (true)
 					{
-						if (!moveStates.Add((tempPos.R, tempPos.C, tempDirIndex))) {
+						if (!moveStates.Add((tempPos!.R, tempPos.C, tempDirIndex))) {
 							hasLoop = true;
 							break;
 						}
@@ -89,7 +89,7 @@ public class Day6
 	}
 
 	// Helper to set the starting Pos to the ^ in the matrix
-	static Pos FindStartPos(char[,] lab, Pos currentPos)
+	static Pos? FindStartPos(char[,] lab, Pos currentPos)
 	{
 		for (int i = 0; i < lab.GetLength(0); i++)
 		{
