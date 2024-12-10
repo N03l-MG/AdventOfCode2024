@@ -34,8 +34,7 @@ public class Day9
 				int[] currentBlock = disk[i];
 				for (int block = currentBlock.Length - 1; block >= 0; block--)
 				{
-					if (currentBlock[block] == -1)
-						continue;
+					if (currentBlock[block] == -1) continue;
 					for (int j = 0; j < i; j++)
 					{
 						int[] targetBlock = disk[j];
@@ -48,16 +47,14 @@ public class Day9
 								break;
 							}
 						}
-						if (moved)
-							break;
+						if (moved) break;
 					}
-					if (moved)
-						break;
+					if (moved) break;
 				}
 			}
 		}
 
-		// Part 2
+		// Part 2 (given up... for now)
 		for (int fileId = blockIndex - 1; fileId >= 0; fileId--)
 		{
 			int currentBlockIndex = disk2.FindIndex(block => block.Contains(fileId));
@@ -72,8 +69,7 @@ public class Day9
 				{
 					if (disk2[checkIndex].All(id => id == -1))
 						availableSpace += disk2[checkIndex].Length;
-					else
-						break;
+					else break;
 					if (availableSpace >= fileSize) {
 						int remaining = fileSize;
 						for (int writeIndex = targetIndex; writeIndex < disk.Count && remaining > 0; writeIndex++)
@@ -93,12 +89,23 @@ public class Day9
 						break;
 					}
 				}
+				foreach (int[] block in disk2)
+				{
+					for (int i = 0; i < block.Length; i++)
+					{
+						if (block[i] == -1)
+							Console.Write('.');
+						else 
+						Console.Write(block[i]);
+					}
+				}
+				Console.WriteLine();
 			}
 		}
 
 		// Results
 		Console.WriteLine("Part 1: " + CheckSum(disk));
-		Console.WriteLine("Part 2: " + CheckSum(disk2));
+		Console.WriteLine("Part 2: " + CheckSum(disk2)); // Incorrect
 	}
 
 	static long CheckSum(List<int[]> disk) 
