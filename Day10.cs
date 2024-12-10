@@ -16,7 +16,7 @@ public class Day10
 		string filePath = "resources/day10input.txt";
 		List<string> lines = [.. File.ReadAllLines(filePath)];
 		int rows = lines.Count;
-        int cols = lines[0].Length;
+		int cols = lines[0].Length;
 		int[,] topographicMap = new int[rows, cols];
 		for (int i = 0; i < rows; i++)
 		{
@@ -39,16 +39,16 @@ public class Day10
 
 		// Part 2
 		int result2 = 0;
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                if (topographicMap[i, j] == 0) {
-                    int rating = CountTrails(topographicMap, rows, cols, new Pos(i, j), []);
-                    result2 += rating;
-                }
-            }
-        }
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (topographicMap[i, j] == 0) {
+					int rating = CountTrails(topographicMap, rows, cols, new Pos(i, j), []);
+					result2 += rating;
+				}
+			}
+		}
 
 		// Results
 		Console.WriteLine("Part 1: " + result1);
