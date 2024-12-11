@@ -44,7 +44,7 @@ public class Day11
 		Console.WriteLine("Part 2: " + totalStones);
 	}
 
-	// Recursive memorization counting function (Part 2)
+	// Recursive memoization counting function (Part 2) ((also yes it IS memoization, not memoRization))
 	static long CountStones(Dictionary<(long, int), long> cache, long stone, int remainingSteps)
 	{
 		if (remainingSteps == 0) return 1;
