@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-
 namespace AdventOfCode2024.source;
 
 public class DayRunner
@@ -12,7 +11,7 @@ public class DayRunner
 		if (!int.TryParse(day, out _) || int.Parse(day) > 25) {
 			Console.WriteLine("Not a valid day!");
 		} else {
-			var type = Type.GetType("AdventOfCode2024.Day" + day);
+			var type = Type.GetType("AdventOfCode2024.source.Day" + day);
 			if (type == null) {
 				Console.WriteLine("Day does not exist!");
 				return;

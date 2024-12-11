@@ -9,9 +9,4 @@
 	<Nullable>enable</Nullable>
 </PropertyGroup>
 
-<ItemGroup>
-    <Compile Include="source\**\*.cs" />
-    <None Include="resources\**\*" CopyToOutputDirectory="PreserveNewest" />
-  </ItemGroup>
-
 </Project>
