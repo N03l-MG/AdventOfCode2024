@@ -39,20 +39,28 @@ public class Day15
 			if (robotPos != null)
 				break;
 		}
-		foreach (char move in moves)
-		{
-			Pos direction = directions[move];
-			if (CanMove(robotPos!, direction, warehouse))
-				robotPos = new(robotPos!.R + direction.R, robotPos.C + direction.C);
-		}
+		Console.CursorVisible = false; // Run and start visualizing through terminal
+		try {
+			foreach (char move in moves)
+			{
+				PrintWarehouse(rows, cols, warehouse);
+				Pos direction = directions[move];
+				if (CanMove(robotPos!, direction, warehouse))
+					robotPos = new(robotPos!.R + direction.R, robotPos.C + direction.C);
+			}
+			PrintWarehouse(rows, cols, warehouse);
+		} finally {
+			Console.CursorVisible = true;
+		} // Finish visualization
 		for (int i = 0; i < rows; i++)
 			for (int j = 0; j < cols; j++)
 				if (warehouse[i, j] == 'O')
 					result1 += 100 * i + j;
-		//PrintWarehouse(rows, cols, warehouse);
 		
 		// Results
 		Console.WriteLine("Part 1: " + result1);
+		// Despite also not doing Part 2 today, I instead chose to make a simple text
+		// visualization of Part 1. Hope some of you may find it cool!
 	}
 
 	// Recursive function to keep moving if possible while shoving the boxes
@@ -77,13 +85,14 @@ public class Day15
 		}
 	}
 
-	// Helper to print the warehouse map (for debugging, disabled)
+	// Helper to print the warehouse map (for visualization)
 	static void PrintWarehouse(int rows, int cols, char[,] warehouse)
 	{
+		Console.SetCursorPosition(0, 0);
 		for (int i = 0; i < rows; i++)
 		{
 			for (int j = 0; j < cols; j++)
-				Console.Write(warehouse[i, j]);
+				Console.Write(warehouse[i, j] + " ");
 			Console.WriteLine();
 		}
 	}
