@@ -19,10 +19,8 @@ public class Day12
 		int cols = lines[0].Length;
 		char[,] garden = new char[rows, cols];
 		for (int i = 0; i < rows; i++)
-		{
 			for (int j = 0; j < cols; j++)
 				garden[i, j] = lines[i][j];
-		}
 
 		// Part 1
 		Dictionary<char, int> prices = [];
