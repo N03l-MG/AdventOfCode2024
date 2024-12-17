@@ -4,12 +4,12 @@ public class Day16
 {
 	public record Pos(int R, int C);
 
-	static readonly (int, int)[] directions = {
+	static readonly (int, int)[] directions = [
         (0, 1),
         (1, 0),
         (0, -1),
         (-1, 0)
-    };
+    ];
 
 	public static void Start()
 	{
