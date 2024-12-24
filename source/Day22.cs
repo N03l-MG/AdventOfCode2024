@@ -1,5 +1,3 @@
-using System.Globalization;
-
 namespace AdventOfCode2024.source;
 
 public class Day22
