@@ -40,8 +40,8 @@ public class Day11
 			totalStones += CountStones(cache, stone, target2);
 
 		// Results
-		Console.WriteLine("Part 1: " + newStones.Count);
-		Console.WriteLine("Part 2: " + totalStones);
+		Console.WriteLine($"Part 1: {newStones.Count}");
+		Console.WriteLine($"Part 2: {totalStones}");
 	}
 
 	// Recursive memoization counting function (Part 2) ((also yes it IS memoization, not memoRization))

@@ -51,8 +51,8 @@ public class Day10
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + result1);
-		Console.WriteLine("Part 2: " + result2);
+		Console.WriteLine($"Part 1: {result1}");
+		Console.WriteLine($"Part 2: {result2}");
 	}
 
 	// Helper function doing BFS to find trails and their scores for Part 1

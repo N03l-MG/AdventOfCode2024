@@ -62,7 +62,7 @@ public class Day14
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + quadrants.Aggregate(1, (acc, val) => acc * val));
+		Console.WriteLine($"Part 1: {quadrants.Aggregate(1, (acc, val) => acc * val)}");
 		// No part 2 because I think it is very poorly written and I simply don't have the time, sorry.
 	}
 

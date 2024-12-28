@@ -113,7 +113,7 @@ public class Day17
 		int? A = FindA(program, answer);
 
 		// Results
-		Console.WriteLine("Part 1: " + string.Join(",", output.Select(n => n.ToString())));
-		Console.WriteLine("Part 2: " + A); // Null.
+		Console.WriteLine($"Part 1: {string.Join(",", output.Select(n => n.ToString()))}");
+		Console.WriteLine($"Part 2: {A}"); // Null.
 	}
 }

@@ -59,7 +59,7 @@ public class Day13 // Once again thank you to HyperNeutrino on youtube for such 
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + totalTokens1);
-		Console.WriteLine("Part 2: " + totalTokens2);
+		Console.WriteLine($"Part 1: {totalTokens1}");
+		Console.WriteLine($"Part 2: {totalTokens2}");
 	}
 }

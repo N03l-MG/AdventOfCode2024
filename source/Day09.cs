@@ -104,8 +104,8 @@ public class Day9
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + CheckSum(disk));
-		Console.WriteLine("Part 2: " + CheckSum(disk2)); // Incorrect
+		Console.WriteLine($"Part 1: {CheckSum(disk)}");
+		Console.WriteLine($"Part 2: {CheckSum(disk2)}"); // Incorrect
 	}
 
 	static long CheckSum(List<int[]> disk) 

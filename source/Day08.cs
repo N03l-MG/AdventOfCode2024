@@ -80,7 +80,7 @@ public class Day8
 		);
 
 		// Results
-		Console.WriteLine("Part 1: " + result1);
-		Console.WriteLine("Part 2: " + result2);
+		Console.WriteLine($"Part 1: {result1}");
+		Console.WriteLine($"Part 2: {result2}");
 	}
 }

@@ -40,7 +40,7 @@ public class Day3
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + result1);
-		Console.WriteLine("Part 1: " + result2);
+		Console.WriteLine($"Part 1: {result1}");
+		Console.WriteLine($"Part 1: {result2}");
 	}
 }

@@ -58,7 +58,7 @@ public class Day15
 					result1 += 100 * i + j;
 		
 		// Results
-		Console.WriteLine("Part 1: " + result1);
+		Console.WriteLine($"Part 1: {result1}");
 		// Despite also not doing Part 2 today, I instead chose to make a simple text
 		// visualization of Part 1. Hope some of you may find it cool!
 	}

@@ -35,8 +35,8 @@ public class Day7
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + result1);
-		Console.WriteLine("Part 2: " + result2);
+		Console.WriteLine($"Part 1: {result1}");
+		Console.WriteLine($"Part 2: {result2}");
 	}
 
 	// Helper to recursively test addition and multiplication of the values

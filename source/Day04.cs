@@ -59,8 +59,8 @@ public class Day4
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + xmasCount);
-		Console.WriteLine("Part 2: " + x_masCount);
+		Console.WriteLine($"Part 1: {xmasCount}");
+		Console.WriteLine($"Part 2: {x_masCount}");
 	}
 
 	// Helper to check if XMAS has been found (part 1)

@@ -83,8 +83,8 @@ public class Day6
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + visited);
-		Console.WriteLine("Part 2: " + loopCount);
+		Console.WriteLine($"Part 1: {visited}");
+		Console.WriteLine($"Part 2: {loopCount}");
 		//PrintLab(lab); // Debugging function disabled
 	}
 

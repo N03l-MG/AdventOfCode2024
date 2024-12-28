@@ -85,6 +85,6 @@ public class Day16
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + minCost);
+		Console.WriteLine($"Part 1: {minCost}");
 	}
 }

@@ -41,8 +41,8 @@ public class Day2
 		}
 
 		// Results
-		Console.WriteLine("Part 1: " + safeCount1);
-		Console.WriteLine("Part 2: " + safeCount2);
+		Console.WriteLine($"Part 1: {safeCount1}");
+		Console.WriteLine($"Part 2: {safeCount2}");
 	}
 
 	// Helper for report checking
